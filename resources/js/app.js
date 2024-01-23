@@ -1,1 +1,22 @@
-import './bootstrap';
+import { createApp, h } from 'vue'
+import route from '../../vendor/tightenco/ziggy';
+import {ZiggyVue} from 'ziggy-js';
+import { Ziggy } from './ziggy.js';
+import { createInertiaApp } from '@inertiajs/vue3'
+
+
+
+createInertiaApp({
+  resolve: name => {
+    const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+    return pages[`./Pages/${name}.vue`]
+  },
+  setup({ el, App, props, plugin }) {
+    const VueApp = createApp({ render: () => h(App, props) })
+      VueApp.config.globalProperties.$route = route;
+
+      VueApp.use(plugin)
+      .use(ZiggyVue,Ziggy)
+      .mount(el);
+  },
+})
