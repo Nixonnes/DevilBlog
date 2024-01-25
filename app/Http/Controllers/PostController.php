@@ -38,7 +38,6 @@ class PostController extends Controller
 ]);
 
     }
-
     public function showPost($id) {
         
         return Inertia::render('PostPage', [

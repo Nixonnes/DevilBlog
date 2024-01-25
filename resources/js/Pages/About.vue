@@ -1,15 +1,16 @@
 <script setup>
-import Main from './Main.vue'
+import AppLayout from '@/Layouts/AppLayout.vue'
 </script>
 
 <template>
     <div>
-        <Main>
+        <AppLayout title="Profile">
             <div class="about_content">
+                
             <h1>О приложении</h1>
             <p><strong>DevilBlog</strong> был создан 19 января 2023 года как пет-проект для портфолио.</p>
         </div>
-        </Main>
+    </AppLayout>
     </div>
 </template>
 
