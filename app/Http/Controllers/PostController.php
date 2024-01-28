@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function show() {
         
-        return Inertia::render('Home', [
+        return Inertia::render('Dashboard', [
             'posts' => Post::all()->map(function ($post){
                 return [
                 'id' => $post->id,
@@ -51,6 +51,18 @@ class PostController extends Controller
                 'content' => $request->content,
             ]
             );
-            return Redirect('/');
+            return Redirect('/dashboard');
     }
-}
+    public function editPost(Request $request) {
+        Post::find($request->id)->update([
+            'title' => $request->title,
+            'content' => $request->content
+        ]);
+    }
+    public function deletePost($id) {
+        Post::find($id)->delete();
+        return Redirect('/dashboard');
+    }
+
+    }
+    

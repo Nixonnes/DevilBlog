@@ -5,12 +5,12 @@
 <template>
     <AppLayout title="Profile">
         <div class="add_post_window">
-            <form class ="add_form" method="post" @submit.prevent="submit">
-                <h1 class="add_head">Создание нового поста</h1>
+            <form class ="add_form" method="patch" @submit.prevent="submit">
+                <h1 class="add_head">Редактирование поста</h1>
                 <label class = "add_label">Название поста</label>
                 <input class = "add_input" type="text" v-model="title">
                 <label class = "add_label">Содержание</label>
-                <textarea  wrap="soft" class = "add_text" v-model="content"></textarea>
+                <textarea wrap="soft" class = "add_text" v-model="content"></textarea>
                 <button type="submit" class="add__btn">Сохранить</button>
         </form>
         </div>
@@ -22,24 +22,35 @@
 import axios from 'axios';
 import AppLayout from '@/Layouts/AppLayout.vue'
     export default {
+        props: {
+            post:Object
+        },
   components: {
     AppLayout,
   },
         data() {
             return {
-                title:null,
-                content:null,
+                title:this.post.title,
+                content:this.post.content,
+                id: this.post.id,
+                normal_content: this.post.content
             }
         },
     methods: {
     submit() {
-    axios.post('/addPost', {
+
+    axios.patch('/editPost', {
+        id:this.id,
         title:this.title,
         content: this.content,
-    })
+    },
+    )
     .then(function (response) {
-        window.location = "/";
+        window.location = './';
 })
+.catch(function (error) {
+    console.log(error);
+  });
     }
 }
     }
@@ -87,6 +98,7 @@ h1 {
     overflow-wrap: break-word;
     font-size: 18px;
     border-radius: 7px;
+    
 
 }
 .add__btn {

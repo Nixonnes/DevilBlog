@@ -34,6 +34,7 @@ Route::middleware([
         return Inertia::render('Dashboard', [
             'posts' => Post::all()->map(function($post){
                 return [
+                    'id' => $post->id,
                 'title' => $post->title,
                 'content' => $post->content
             ];
@@ -42,3 +43,13 @@ Route::middleware([
     })->name('profile');
     Route::get('/post/{id}', [PostController::class, 'showPost',])->name('post.show');
 });
+
+Route::inertia('/newPost', 'NewPost');
+Route::post('/addPost', [PostController::class, 'Store']);
+Route::patch('/editPost', [PostController::class, 'editPost']);
+Route::delete('/post/{id}/delete', [PostController::class, 'deletePost'])->name('post.delete');
+Route::get('/post/{id}/edit', function($id) {
+    return Inertia::render('EditPost', [
+        'post' => Post::find($id)
+    ]);
+})->name('post.edit');
