@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\PostController;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,21 +32,26 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard', [
-            'posts' => Post::all()->map(function($post){
-                return [
-                    'id' => $post->id,
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard', [
+        'posts' => Post::all()->map(function($post){
+            return [
+                'id' => $post->id,
                 'title' => $post->title,
                 'content' => $post->content
             ];
         }),
         ]);
     })->name('profile');
-    Route::get('/post/{id}', [PostController::class, 'showPost',])->name('post.show');
+Route::get('/post/{id}', [PostController::class, 'showPost',])->name('post.show');
 });
 
-Route::inertia('/newPost', 'NewPost');
+Route::get('/newPost', function() {
+    return Inertia::render('NewPost',
+    [
+        'user'=> Auth::user()
+    ]);
+});
 Route::post('/addPost', [PostController::class, 'Store']);
 Route::patch('/editPost', [PostController::class, 'editPost']);
 Route::delete('/post/{id}/delete', [PostController::class, 'deletePost'])->name('post.delete');

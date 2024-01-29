@@ -208,7 +208,7 @@ const logout = () => {
 main {
     margin-left:18%;
     max-width: 64%;
-    min-height:100vh;
+    height:100vh;
     
 }
 .profile_btn {

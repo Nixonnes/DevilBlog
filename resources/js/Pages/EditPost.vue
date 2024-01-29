@@ -33,7 +33,6 @@ import AppLayout from '@/Layouts/AppLayout.vue'
                 title:this.post.title,
                 content:this.post.content,
                 id: this.post.id,
-                normal_content: this.post.content
             }
         },
     methods: {
