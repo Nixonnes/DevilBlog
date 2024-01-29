@@ -6,6 +6,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import HorizontalMenu from '@/components/HorizontalMenu.vue';
 
 defineProps({
     title: String,
@@ -25,7 +26,7 @@ const logout = () => {
         <Banner />
 
         <div class="app">
-            
+            <HorizontalMenu></HorizontalMenu>
             <nav class="header">
                 <Link :href="route('profile')">
                     
@@ -180,7 +181,7 @@ const logout = () => {
 
 <style>
 .wrapper {
-    height: 100vh;
+   height: 100vh;
 }
 .app {
     background-color: #354e8a17;
@@ -193,7 +194,7 @@ const logout = () => {
 }
 .head {}
 .menu__btns {
-    height:65px;
+    height:45px;
     display:flex;
     align-items: center;
     justify-content: space-between;
@@ -208,7 +209,8 @@ const logout = () => {
 main {
     margin-left:18%;
     max-width: 64%;
-    height:100vh;
+    min-height:100vh;
+    height:100%;
     
 }
 .profile_btn {

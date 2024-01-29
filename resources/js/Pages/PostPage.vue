@@ -73,13 +73,13 @@ import { Link } from '@inertiajs/vue3';
 }
 .edit_btn {
     position: absolute;
-    top:135px;
+    top:128px;
     left:1508px;
 }
 .delete_btn {
     position: absolute;
     left:1540px;
-    top:135px;
+    top:128px;
 }
 .post-card {
     min-height:100%;
