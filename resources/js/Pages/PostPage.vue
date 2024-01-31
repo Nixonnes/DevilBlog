@@ -8,13 +8,14 @@ defineProps({
     <AppLayout title="Profile">
     <PostItem :post="post">
         <h1 class="post-head">{{ post.title }} <Link class="edit_btn" :href="route('post.edit', post.id)"><img src='/images/edit_btn.png' width="20"></Link><button type="button" @click="showDeleteSubmit" class="delete_btn"><img src='/images/delete_btn.png' width="20"></button></h1>
-        <small class="time_create">{{ new Date(post.created_at).toLocaleString() }}</small>
+        <small class="time_create">{{ new Date(post.updated_at).toLocaleString() }}</small>
         <p class="post-content"> {{ post.content}} </p>
         <div class="deleteWindow" v-if="isDelete">
     <p class="delete_msg">Вы действительно хотите удалить данный пост?</p>
     <Link method="delete" :href="route('post.delete',post.id)" class="delete_btns">Удалить</Link>
     <Link href="./" class="delete_btns">Отменить</Link>
 </div>
+<CommentSection></CommentSection>
 </PostItem>
 
 </AppLayout>
@@ -24,6 +25,7 @@ defineProps({
 import AppLayout from '@/Layouts/AppLayout.vue';
 import PostItem from '../components/Post-Item.vue';
 import { Link } from '@inertiajs/vue3';
+import CommentSection from '@/components/CommentSection.vue';
     export default {
     data() {
         return {
@@ -75,13 +77,13 @@ import { Link } from '@inertiajs/vue3';
 }
 .edit_btn {
     position: absolute;
-    top:128px;
+    top:122px;
     left:1508px;
 }
 .delete_btn {
     position: absolute;
     left:1540px;
-    top:128px;
+    top:122px;
 }
 .post-card {
     min-height:100%;

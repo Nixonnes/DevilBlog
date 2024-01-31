@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <AppLayout title="Profile">
+    <AppLayout title="Профиль">
         
             <h2 class= "hello_user">
                 Добро пожаловать, {{ $page.props.auth.user.name }}

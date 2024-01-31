@@ -12,43 +12,55 @@ defineProps({
     <Head title="Welcome" />
 
     <div class=" welcome_window relative sm:flex sm:justify-center sm:items-center min-h-screen bg-center  dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        <div class="welcome_logo">
+            <div v-if="canLogin" class="header__btns">
+            <Link v-if="$page.props.auth.user" :href="route('profile')" class="welcome_btns">Профиль</Link>
+
+            <template v-else>
+                <Link :href="route('login')" class="welcome_btns">Войти</Link>
+
+                <Link v-if="canRegister" :href="route('register')" class="welcome_btns">Регистрация</Link>
+            </template>
+        </div>
+                <ApplicationLogo class="welcome_logotype"></ApplicationLogo>
+            </div>
+        <div class="main">
         <div class="description_app">
             <h1 class="slogan">Write,Think and Do</h1>
             <p class="additional_text">DevilBlog is the best place for your development journal!</p>
             <p class="additional_text">Write,share your experience with other people around the world</p>
         </div>
-        <div v-if="canLogin" class="sm:fixed sm:top-0 sm:end-0 p-6 text-end z-10">
-            <Link v-if="$page.props.auth.user" :href="route('profile')" class="welcome_btns">Dashboard</Link>
-
-            <template v-else>
-                <Link :href="route('login')" class="welcome_btns">Log in</Link>
-
-                <Link v-if="canRegister" :href="route('register')" class="welcome_btns">Register</Link>
-            </template>
-        </div>
         
-        <div class="welcome_logo">
-                <ApplicationLogo class="welcome_logotype"></ApplicationLogo>
-            </div>
+        
+        
             <div class="description">
                 
             </div>
         </div>
-            
+        </div>
 </template>
 
 <style>
 .welcome_window {
-    background-color: #e9ec2496;
+    background-color: #ffffff96;
+}
+.main {
+    min-height: 100vh;
+    margin-left:20%;
+    margin-right:20%;
+    width:100%;
 }
 .logo.welcome_logotype {
-    font-size: 52px;
+    position: relative;
+    top:2px;
+    font-size: 30px;
+    font-weight:800;
+    max-width: fit-content;
 }
 .description_app {
     position:absolute;
     top:160px;
-    margin-left:35%;
-    margin-right: 30%;
+    left:33%;
     
 }
 .slogan {
@@ -61,6 +73,10 @@ defineProps({
     margin-top: 38px;
     font-size:22px;
     font-weight: 500;
+}
+.header__btns {
+    position:relative;
+    left:85%;
 }
 .welcome_btns {
     font-weight: 600;
@@ -80,7 +96,12 @@ defineProps({
     }
 }
 .welcome_logo {
+    display:flex;
+    align-items: center;
+    width:100%;
     position:absolute;
-    top:20px;
+    top:0px;
+    background-color: #e9ec2496;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.253);
 }
 </style>

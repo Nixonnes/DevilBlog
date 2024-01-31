@@ -31,7 +31,6 @@ import AppLayout from '@/Layouts/AppLayout.vue'
             return {
                 title:null,
                 content:null,
-                user_id:2
             }
         },
     methods: {
@@ -39,7 +38,6 @@ import AppLayout from '@/Layouts/AppLayout.vue'
     axios.post('/addPost', {
         title:this.title,
         content: this.content,
-        user_id: this.user_id
     })
     .then(function (response) {
         window.location = "/dashboard";

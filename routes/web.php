@@ -27,23 +27,21 @@ Route::get('/', function () {
 });
 
 Route::inertia('/about', 'About');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-Route::get('/dashboard', function () {
+
+    Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [
-        'posts' => Post::all()->map(function($post){
-            return [
-                'id' => $post->id,
-                'title' => $post->title,
-                'content' => $post->content
-            ];
-        }),
-        ]);
+        $user_id = Auth::user()->id,
+        'posts' => Post::where('user_id', $user_id)->latest()->get(),
+    ]);
     })->name('profile');
-Route::get('/post/{id}', [PostController::class, 'showPost',])->name('post.show');
+
+    Route::get('/post/{id}', [PostController::class, 'showPost',])->name('post.show');
 });
 
 Route::get('/newPost', function() {
@@ -53,10 +51,18 @@ Route::get('/newPost', function() {
     ]);
 });
 Route::post('/addPost', [PostController::class, 'Store']);
+
 Route::patch('/editPost', [PostController::class, 'editPost']);
+
 Route::delete('/post/{id}/delete', [PostController::class, 'deletePost'])->name('post.delete');
+
 Route::get('/post/{id}/edit', function($id) {
     return Inertia::render('EditPost', [
         'post' => Post::find($id)
     ]);
 })->name('post.edit');
+
+/* Ссылки страницы пользователя */
+Route::get('/subscribers', function() {
+    return Inertia::render('Subscribers');
+})->name('subscribe');

@@ -11,13 +11,6 @@ use Inertia\Inertia;
 
 class PostController extends Controller
 {
-    // Отображение постов на странице пользователя
-    public function show() {
-        
-        return Inertia::render('Dashboard', [
-            'posts' => Post::with('user:id,name')->latest()->get(),
-        ]);
-    }
     // Страница отдельного поста
     public function showPost($id) {
         

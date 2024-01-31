@@ -187,6 +187,7 @@ const logout = () => {
     background-color: #354e8a17;
     width:100%;
     min-height:100%;
+    line-height:1.9em;
 }
 .header {
     background-color: #e9ec2496;
