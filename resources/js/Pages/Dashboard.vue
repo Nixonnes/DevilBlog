@@ -34,7 +34,7 @@ import PostList from '@/components/Post-List.vue';
     height:45px;
     width:160px;
     background: none;
-    background-color: rgba(236, 225, 69, 0.774);
+    background-color: rgba(223, 213, 72, 0.788);
     font-weight: 600;
     color:rgb(0, 0, 0);
     border:1.5px solid black;

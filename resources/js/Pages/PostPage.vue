@@ -46,6 +46,7 @@ import { Link } from '@inertiajs/vue3';
     border:none;
     min-height: 100%;
     overflow: hidden;
+    word-wrap: break-word;
 }
 .post-head {
     display: inline-flex;
@@ -69,7 +70,8 @@ import { Link } from '@inertiajs/vue3';
     margin-top: 60px;
     font-size:17px;
     color:black;
-    white-space: pre;
+    line-height: 1.7em;
+    
 }
 .edit_btn {
     position: absolute;
@@ -86,27 +88,31 @@ import { Link } from '@inertiajs/vue3';
 }
 .deleteWindow {
     position: absolute;
-
+    border:1.5px solid rgba(0, 0, 0, 0.685);
+    border-radius: 12px;
     top:32vh;
-    min-width:60%;
-    min-height:385px;
-    background-color: #313131;
-    font-size: 26px;
+    left:31vw;
+    min-width:42%;
+    min-height:310px;
+    background-color: #e6dc86;
+    color:black;
+    font-size: 22px;
     z-index: 1000;
 }
 .delete_msg {
     position: relative;
     top:60px;
     text-align: center;
-    color:#e9ec24dc;
+    color:#000000dc;
 }
 .delete_btns {
     position: relative;
-    top:240px;
+    top:200px;
     margin:40px;
-    padding:12px;
-    border-radius: 5px;
-    left:385px;
-    background-color: #e9ec24d5;
+    padding:8px;
+    border-radius: 8px;
+    left:245px;
+    background-color: #1f1919;
+    color:rgb(255, 217, 0);
 }
 </style>

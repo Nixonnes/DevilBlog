@@ -34,15 +34,15 @@ const logout = () => {
                 <!-- Primary Navigation Menu -->
                 <div class="menu">
                     <div class="menu__btns">
-                        <h1 class="logo">DevilBlog</h1>
+                        <h1 class="logotype">DevilBlog</h1>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('profile')" :active="route().current('dashboard')">
-                                    Profile
+                                    Профиль
                                 </NavLink>
                                 <NavLink href="/about">
-                                    About
+                                    О приложении
                                 </NavLink>
                             </div>
                         
@@ -72,11 +72,11 @@ const logout = () => {
                                     <template #content>
                                         <!-- Account Management -->
                                         <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Manage Account
+                                            Управление аккаунтом
                                         </div>
 
                                         <DropdownLink :href="route('profile.show')">
-                                            Profile
+                                            Профиль
                                         </DropdownLink>
 
 
@@ -85,7 +85,7 @@ const logout = () => {
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <DropdownLink as="button">
-                                                Log Out
+                                                Выйти
                                             </DropdownLink>
                                         </form>
                                     </template>
@@ -126,7 +126,7 @@ const logout = () => {
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('profile')" :active="route().current('dashboard')">
-                            Profile
+                            Профиль
                         </ResponsiveNavLink>
                     </div>
 
@@ -149,14 +149,14 @@ const logout = () => {
 
                         <div class="mt-3 space-y-1">
                             <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
-                                Profile
+                                Профиль
                             </ResponsiveNavLink>
 
 
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <ResponsiveNavLink as="button">
-                                    Log Out
+                                    Выйти
                                 </ResponsiveNavLink>
                             </form>
                         </div>
@@ -201,7 +201,7 @@ const logout = () => {
     min-width:100%;
     
 }
-.logo {
+.logotype {
     font-size:24px;
     font-weight: 600;
     margin-left:120px;

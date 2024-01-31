@@ -19,7 +19,7 @@ const props = defineProps({
     position: relative;
     right:450px;
     margin-inline: 15px;
-    font-weight: 500;
+    font-weight: 600;
     font-size:18px;
 }
 </style>

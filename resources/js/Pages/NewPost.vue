@@ -91,6 +91,7 @@ h1 {
     overflow-wrap: break-word;
     font-size: 18px;
     border-radius: 7px;
+    line-height: 1.6em;
 
 }
 .add__btn {
