@@ -1,6 +1,7 @@
 <script setup>
 defineProps({
-    post:Object
+    post:Object,
+    comments:Object
 })
 </script>
 
@@ -15,7 +16,8 @@ defineProps({
     <Link method="delete" :href="route('post.delete',post.id)" class="delete_btns">Удалить</Link>
     <Link href="./" class="delete_btns">Отменить</Link>
 </div>
-<CommentSection></CommentSection>
+<CommentSection v-bind:id="post.id"></CommentSection>
+<CommentList v-bind:comments="comments"></CommentList>
 </PostItem>
 
 </AppLayout>
@@ -26,6 +28,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import PostItem from '../components/Post-Item.vue';
 import { Link } from '@inertiajs/vue3';
 import CommentSection from '@/components/CommentSection.vue';
+import CommentList from '@/components/Comment-List.vue';
     export default {
     data() {
         return {
@@ -117,4 +120,5 @@ import CommentSection from '@/components/CommentSection.vue';
     background-color: #1f1919;
     color:rgb(255, 217, 0);
 }
+
 </style>

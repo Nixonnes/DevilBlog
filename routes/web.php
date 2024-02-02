@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use App\Models\User;
@@ -50,11 +51,12 @@ Route::get('/newPost', function() {
         'user'=> Auth::user()
     ]);
 });
-Route::post('/addPost', [PostController::class, 'Store']);
+Route::post('/addPost', [PostController::class, 'Store']); // Добавление нового поста
+Route::post('/addComment', [CommentController::class, 'createComment']);
 
 Route::patch('/editPost', [PostController::class, 'editPost']);
 
-Route::delete('/post/{id}/delete', [PostController::class, 'deletePost'])->name('post.delete');
+Route::delete('/post/{post_id}/delete', [PostController::class, 'deletePost'])->name('post.delete');
 
 Route::get('/post/{id}/edit', function($id) {
     return Inertia::render('EditPost', [

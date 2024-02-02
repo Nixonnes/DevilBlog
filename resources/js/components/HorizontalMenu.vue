@@ -1,9 +1,9 @@
 <template>
     <div class="menu">
-        <Link class="horizontal_menu_btn">Лента</Link>
+        <Link class="horizontal_menu_btn" href="/news">Лента</Link>
         <Link class="horizontal_menu_btn" :href="route('subscribe')" >Подписки</Link>
-        <Link class="horizontal_menu_btn">Сообщество</Link>
-        <Link class="horizontal_menu_btn">Поддержка</Link>
+        <Link class="horizontal_menu_btn" href="/society">Сообщество</Link>
+        <Link class="horizontal_menu_btn" href="/support">Поддержка</Link>
     </div>
 </template>
 

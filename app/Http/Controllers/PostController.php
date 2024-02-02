@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use App\Models\Comment;
 
 
 class PostController extends Controller
@@ -15,7 +16,8 @@ class PostController extends Controller
     public function showPost($id) {
         
         return Inertia::render('PostPage', [
-            'post' => Post::find($id)
+            'post' => Post::find($id),
+            'comments' => Comment::where('post_id',$id)->latest()->get(),
             
 ]);
     }
@@ -37,8 +39,8 @@ class PostController extends Controller
         ]);
     }
     // Функция удаления постов
-    public function deletePost($id) {
-        Post::find($id)->delete();
+    public function deletePost($post_id) {
+        Post::find($post_id)->delete();
         return Redirect('/dashboard');
     }
 
