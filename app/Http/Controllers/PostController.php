@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Models\Comment;
+use App\Models\Like;
 
 
 class PostController extends Controller
@@ -16,8 +17,10 @@ class PostController extends Controller
     public function showPost($id) {
         
         return Inertia::render('PostPage', [
-            'post' => Post::find($id),
+            'post' => Post::with('likes')->find($id),
             'comments' => Comment::where('post_id',$id)->latest()->get(),
+            'likes' => Like::where('post_id', $id)->get()->count(),
+            'isLiked' => Like::where('post_id', $id)->where('user_id', Auth::user()->id)->get()
             
 ]);
     }

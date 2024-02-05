@@ -6,7 +6,7 @@ defineProps( {
 
 <template>
     <h1 class="comment_header">Комментарии</h1>
-    <div class="comment_place">
+    <div class="comment_input">
         <form  method="post" @submit.prevent="submit">
         <InputLabel for="content"></InputLabel>
         <textarea class="comment" v-model="content"></textarea>
@@ -53,7 +53,7 @@ import { usePage } from '@inertiajs/vue3';
     font-weight: 600;
     font-size: 24px;
 }
-    .comment_place {
+    .comment_input {
     position:relative;
     min-height:190px;
     }

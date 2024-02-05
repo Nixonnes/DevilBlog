@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use App\Models\User;
@@ -53,6 +54,7 @@ Route::get('/newPost', function() {
 });
 Route::post('/addPost', [PostController::class, 'Store']); // Добавление нового поста
 Route::post('/addComment', [CommentController::class, 'createComment']);
+Route::post('/like', [LikeController::class, 'toggleLike']);
 
 Route::patch('/editPost', [PostController::class, 'editPost']);
 

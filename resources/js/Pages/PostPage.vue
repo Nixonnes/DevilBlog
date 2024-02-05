@@ -1,7 +1,9 @@
 <script setup>
 defineProps({
     post:Object,
-    comments:Object
+    comments:Object,
+    likes:Number,
+    isLiked:Object
 })
 </script>
 
@@ -15,9 +17,12 @@ defineProps({
     <p class="delete_msg">Вы действительно хотите удалить данный пост?</p>
     <Link method="delete" :href="route('post.delete',post.id)" class="delete_btns">Удалить</Link>
     <Link href="./" class="delete_btns">Отменить</Link>
-</div>
+        </div>
+        <LikeButton v-bind:post_id="post.id" :likes="likes" :isLiked="isLiked"></LikeButton>
 <CommentSection v-bind:id="post.id"></CommentSection>
+<div class="comment_place">
 <CommentList v-bind:comments="comments"></CommentList>
+</div>
 </PostItem>
 
 </AppLayout>
@@ -29,6 +34,7 @@ import PostItem from '../components/Post-Item.vue';
 import { Link } from '@inertiajs/vue3';
 import CommentSection from '@/components/CommentSection.vue';
 import CommentList from '@/components/Comment-List.vue';
+import LikeButton from '@/components/LikeButton.vue';
     export default {
     data() {
         return {
@@ -120,5 +126,7 @@ import CommentList from '@/components/Comment-List.vue';
     background-color: #1f1919;
     color:rgb(255, 217, 0);
 }
-
+.comment_place {
+    padding:30px;
+}
 </style>

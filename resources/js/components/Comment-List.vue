@@ -7,12 +7,12 @@ import { Link } from '@inertiajs/vue3'
 </script>
 
 <template>
-    <div class="post-list" v-for="comment in comments" :key="comment.id">
+    <div class="comment-list" v-for="comment in comments" :key="comment.id">
     <Comment-Item :comment="comment" >
-        <h2 class="post_header"> <p class="post_name">{{ comment.username}}</p>
-            <p class="post_name">{{ comment.content}}</p>
+        <h2 class="comment_header">{{ comment.username}} </h2>
+            <p class="comment_name">{{ comment.content}}</p>
             <slot/>
-        </h2>
+        
         
     </Comment-Item>
 </div>
@@ -34,24 +34,18 @@ import CommentItem from './Comment-Item.vue';
 </script>
 
 <style scoped>
-.post_header {
+.comment_header {
     font-weight: 600;
-    display: flex;
+    display: inline-block;
     flex-wrap: nowrap;
     justify-content: space-between;
     overflow: hidden;
-    text-overflow: ellipsis
+    border-bottom: 1px solid rgba(0, 0, 0, 0.226);
 }
-.post-list-header {
-    padding:32px 32px 32px 0px;
-    font-weight: 600;
-    font-size:30px;
+.comment_name {
+    margin-top:20px;
 }
-h2 {
-    display:flex;
-    justify-content: space-between;
-    
-}
+
 .edit_btn {
     position: relative;
     left:1160px;
