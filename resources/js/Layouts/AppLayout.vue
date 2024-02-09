@@ -180,6 +180,9 @@ const logout = () => {
 </template>
 
 <style>
+:root {
+    --color:#0f61048f;
+}
 .wrapper {
    height: 100vh;
 }
@@ -190,7 +193,7 @@ const logout = () => {
     line-height:1.9em;
 }
 .header {
-    background-color: #e9ec2496;
+    background-color: var(--color);
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.144);
 }
 .head {}
@@ -208,7 +211,7 @@ const logout = () => {
     margin-left:120px;
 }
 main {
-    margin-left:18%;
+    margin-left:26%;
     max-width: 64%;
     min-height:100vh;
     height:100%;

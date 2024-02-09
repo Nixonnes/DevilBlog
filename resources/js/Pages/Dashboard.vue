@@ -31,15 +31,16 @@ import PostList from '@/components/Post-List.vue';
 }
 .admin_btn {
     margin-top: 40px;
-    height:45px;
-    width:160px;
+    height:38px;
+    width:124px;
     background: none;
-    background-color: rgba(223, 213, 72, 0.788);
+    background-color: var(--color);
     font-weight: 600;
-    color:rgb(0, 0, 0);
-    border:1.5px solid black;
-    border-radius: 5px;
-    font-size:18px;
+    color:#000000ce;
+    border:1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 4px;
+    box-shadow: black 1px 1.35px;
+    font-size:16px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 </style>

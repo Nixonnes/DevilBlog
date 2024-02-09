@@ -101,7 +101,7 @@ defineProps({
     width:100%;
     position:absolute;
     top:0px;
-    background-color: #e9ec2496;
+    background-color: #0f61048f;
     border-bottom: 1px solid rgba(0, 0, 0, 0.253);
 }
 </style>

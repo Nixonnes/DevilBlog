@@ -20,8 +20,7 @@ class PostController extends Controller
             'post' => Post::with('likes')->find($id),
             'comments' => Comment::where('post_id',$id)->latest()->get(),
             'likes' => Like::where('post_id', $id)->get()->count(),
-            'isLiked' => Like::where('post_id', $id)->where('user_id', Auth::user()->id)->get()
-            
+            'isLiked' => Like::where('post_id', $id)->where('user_id', Auth::user()->id)->get()->isNotEmpty(), 
 ]);
     }
     // Функция добавления постов

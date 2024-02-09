@@ -4,7 +4,7 @@ import axios from 'axios';
 defineProps( {
     post_id:Number,
     likes:Number,
-    isLiked:Object
+    isLiked:Boolean
 })
 </script>
 
@@ -19,7 +19,7 @@ defineProps( {
         data() {
             return {
                 likesCount:this.$props.likes,
-                isLiked:this.$props.isLiked,
+                isLiked:this.$props.isLiked
             }
         },
         methods:
@@ -35,22 +35,23 @@ defineProps( {
                 } else {
                     this.isLiked = false;
                 }
+                this.status= this.isLiked;
             })
             .catch(error => {
                 console.error(error);
             });
     },
 },
-        }
+}
 </script>
 
 <style scoped>
 .like__btn {
     font-weight: 600;
     margin-top:16px;
-    background-color: #fbff04;
-    padding:10px;
-    padding-right:52px;
+    background-color: var(--color);
+    padding:6px;
+    padding-right:16px;
     border-radius:12px;
     border:0.875px solid rgba(0, 0, 0, 0.719);
 }

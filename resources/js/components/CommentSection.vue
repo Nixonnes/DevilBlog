@@ -1,6 +1,7 @@
 <script setup>
 defineProps( {
-    id:Number
+    id:Number,
+    comments:Object
 })
 </script>
 
@@ -12,6 +13,7 @@ defineProps( {
         <textarea class="comment" v-model="content"></textarea>
         <PrimaryButton class="sbmt_comment">Отправить</PrimaryButton>
         </form> 
+        <CommentList :comments="this.comments"></CommentList>
     </div>
 </template>
 
@@ -20,6 +22,7 @@ import axios from 'axios';
 import InputLabel from './InputLabel.vue';
 import PrimaryButton from './PrimaryButton.vue';
 import { usePage } from '@inertiajs/vue3';
+import CommentList from './Comment-List.vue';
 
     export default {
         props: {
@@ -29,7 +32,8 @@ import { usePage } from '@inertiajs/vue3';
             return {
                 content:null,
                 post_id:null,
-                username:usePage().props.auth.user.name
+                username:usePage().props.auth.user.name,
+                comments:this.$props.comments
 
             }
         },
@@ -41,7 +45,20 @@ import { usePage } from '@inertiajs/vue3';
                 post_id: this.$props.id,
                 username:this.username
             })
-            this.content = null;
+            .then(response => {
+                this.fetchComments()
+                this.content = null;
+            })
+            
+        },
+        fetchComments() {
+            axios.get(`/comments/${this.$props.id}`)
+            .then(response => {
+                this.comments = response.data
+            })
+            .catch(error => {
+        console.error('Ошибка при загрузке комментариев:', error);
+      });
         }
     }
 }
@@ -64,7 +81,9 @@ import { usePage } from '@inertiajs/vue3';
     border-radius: 7px;
     }
     .sbmt_comment {
-    width:15%;
-    height:60px;
+    margin-top: 9px;
+    padding:13px;
+    border-radius: 8px;
+    border:1px solid rgba(0, 0, 0, 0.459);
 }
 </style>

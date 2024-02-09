@@ -66,10 +66,12 @@ h1 {
 }
 
 .add_label {
-    margin-top:40px;
+    margin-top:24px;
+    margin-bottom:15px;
     display: block;
-    font-size: 21px;
+    font-size: 19px;
     color:rgba(8, 7, 17, 0.76);
+    font-weight: 600;
 
 }
 
@@ -94,14 +96,15 @@ h1 {
 }
 .add__btn {
     margin-left:40%;
-    margin-top:80px;
-    padding:12px;
+    margin-top:65px;
+    padding:14px;
     display:block;
-    background-color: rgb(181, 200, 231);
-    border:1px solid orange;
-    border-radius: 6px;
+    background-color: var(--color);
+    border:1px solid rgba(0, 0, 0, 0.404);
+    border-radius: 4px;
     color:rgb(0, 0, 0);
-    font-size:20px;
+    font-size:18px;
+    font-weight: 600;
     cursor: pointer;
 }
 </style>

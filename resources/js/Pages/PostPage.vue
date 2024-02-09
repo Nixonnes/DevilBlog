@@ -3,7 +3,7 @@ defineProps({
     post:Object,
     comments:Object,
     likes:Number,
-    isLiked:Object
+    isLiked:Boolean
 })
 </script>
 
@@ -19,9 +19,8 @@ defineProps({
     <Link href="./" class="delete_btns">Отменить</Link>
         </div>
         <LikeButton v-bind:post_id="post.id" :likes="likes" :isLiked="isLiked"></LikeButton>
-<CommentSection v-bind:id="post.id"></CommentSection>
+<CommentSection v-bind:id="post.id" v-bind:comments="comments" v-bind:user_id="post.user_id"></CommentSection>
 <div class="comment_place">
-<CommentList v-bind:comments="comments"></CommentList>
 </div>
 </PostItem>
 
@@ -71,7 +70,7 @@ import LikeButton from '@/components/LikeButton.vue';
 }
 .time_create {
     position: absolute;
-    left:1420px;
+    left:1600px;
     top:185px;
     color:#0000009d;
     font-weight:600;
@@ -87,11 +86,11 @@ import LikeButton from '@/components/LikeButton.vue';
 .edit_btn {
     position: absolute;
     top:122px;
-    left:1508px;
+    left:1650px;
 }
 .delete_btn {
     position: absolute;
-    left:1540px;
+    left:1680px;
     top:122px;
 }
 .post-card {

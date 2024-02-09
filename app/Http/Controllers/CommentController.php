@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     public function createComment(Request $request) {
-        $user = Auth::user();
             Comment::create(    
         [
             'user_id' => Auth::user()->id,
@@ -20,5 +19,15 @@ class CommentController extends Controller
         ;
         return Redirect('/dashboard');
 }
+
+    public function Show($id) {
+        $comments = Comment::where('post_id', $id)->latest()->get();
+
+        return response()->json($comments);
+    }
+
+    public function deleteComment($id) {
+        Comment::find($id)->delete();
+    }
     }
 

@@ -44,7 +44,8 @@ Route::middleware([
     })->name('profile');
 
     Route::get('/post/{id}', [PostController::class, 'showPost',])->name('post.show');
-});
+    Route::get('/comments/{post_id}', [CommentController::class, 'Show']);
+
 
 Route::get('/newPost', function() {
     return Inertia::render('NewPost',
@@ -52,6 +53,9 @@ Route::get('/newPost', function() {
         'user'=> Auth::user()
     ]);
 });
+
+
+
 Route::post('/addPost', [PostController::class, 'Store']); // Добавление нового поста
 Route::post('/addComment', [CommentController::class, 'createComment']);
 Route::post('/like', [LikeController::class, 'toggleLike']);
@@ -59,6 +63,7 @@ Route::post('/like', [LikeController::class, 'toggleLike']);
 Route::patch('/editPost', [PostController::class, 'editPost']);
 
 Route::delete('/post/{post_id}/delete', [PostController::class, 'deletePost'])->name('post.delete');
+Route::delete('/comments/{comment_id}/delete', [CommentController::class, 'deleteComment']);
 
 Route::get('/post/{id}/edit', function($id) {
     return Inertia::render('EditPost', [
@@ -70,3 +75,8 @@ Route::get('/post/{id}/edit', function($id) {
 Route::get('/subscribers', function() {
     return Inertia::render('Subscribers');
 })->name('subscribe');
+Route::get('/community', function() {
+    return Inertia::render('Community');
+});
+
+});

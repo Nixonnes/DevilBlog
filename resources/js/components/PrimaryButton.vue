@@ -14,7 +14,7 @@ defineProps({
 </template>
 <style scoped>
 .primary_btn {
-    background-color: #fbff04;
+    background-color: var(--color);
     padding:15px;
     border-radius: 8px;
     font-weight: 600;
